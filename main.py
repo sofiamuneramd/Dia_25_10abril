@@ -18,6 +18,7 @@ hoja1=File.parse('Hoja1')
 
 nombres=hoja1['Nombre'].values
 apellido=hoja1['Apellido'].values
+print(apellido)
 
 # Vemos que se almacena en una lista con print(nombres)
 
@@ -65,9 +66,9 @@ copia2 = pd.DataFrame(np.array([[2, 85, 37], [43, 55, 600]]))
 
 # Vamos a crear otra hoja en el mismo archivo 
 
-archivo=ExcelWriter('copia2.xls')
+archivo=ExcelWriter('copia3.xls')
 copia2.to_excel(archivo,'Hoja Copia 2',index=False)
-archivo.save()
+
 
 # Con este comando vemos las estadisticas de resumen para las columnas numericas de copia2
 
@@ -79,10 +80,10 @@ copia3=pd.DataFrame(a)
 
 # Guardamos el archivo
 
-archivo=ExcelWriter('copia2.xls')
+archivo=ExcelWriter('copia3.xls')
 copia2.to_excel(archivo,'Hoja Copia 3',index=False)
 archivo.save()
-
+archivo.close()
 
 
 
