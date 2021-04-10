@@ -6,19 +6,40 @@ import pandas as pd
 
 File=pd.ExcelFile('Libro1.xls')
 
-# Se leer el contendio de la Hoja1
+# Se lee el contendio de la Hoja1
 
 hoja1=File.parse('Hoja1')
-print(hoja1)
-print(hoja1.columns)
-nombres=hoja1['Nombre'].values
-print(nombres)
 
+# Vemos que si funciona con print(hoja1)
+
+# Ahora imprimimos las columnas con print(hoja1.columns)
+
+# Vamos a establecer una variable que contenga los valores de la columna Nombre y apellido
+
+nombres=hoja1['Nombre'].values
+apellido=hoja1['Apellido'].values
+
+# Vemos que se almacena en una lista con print(nombres)
+
+# Importamos ExcelWriter para crear una hoja nueva y escribir en ella
 
 from pandas import ExcelWriter
 
-df=pd.DataFrame({'Nombre':nombres})
-df=df[['Nombre']]
-writer=ExcelWriter('copia1.xls')
-df.to_excel(writer,'Hoja Copia',index=False)
-writer.save()
+# Creamos con Dateframe el nombre de las columnas de nuestra hoja de calculo (Nombre, Primer Apellido, Segundo Apellido) 
+
+# Tambien se introduce la lista de datos de cada columna, algunas importadas de Libro1 otras se introducen directamente
+
+copia1=pd.DataFrame({ 'Nombre' : nombres, 'Primer Apellido' : apellido, 'Segundo Apellido' : ['Medina', 'Montoya', 'Peña' ]})
+
+# Introduciomos la siguiente linea para que las columnas queden en un orden especifico
+
+copia1=copia1[['Nombre','Primer Apellido','Segundo Apellido']]
+
+# Ahora creamos y guardamos el archivo. Index=False es para evitar que se cree una columna adicional con numeracion
+
+archivo=ExcelWriter('copia1.xls')
+copia1.to_excel(archivo,'Hoja Copia',index=False)
+archivo.save()
+
+
+
