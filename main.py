@@ -70,6 +70,7 @@ copia2 = pd.DataFrame(np.array([[2, 85, 37], [43, 55, 600]]))
 
 archivo1=ExcelWriter('copia3.xls')
 copia2.to_excel(archivo1,'Hoja Copia 2',index=False)
+archivo1.save()
 
 # Con este comando vemos las estadisticas de resumen para las columnas numericas de copia2
 
