@@ -41,6 +41,7 @@ copia1=copia1[['Nombre','Primer Apellido','Segundo Apellido']]
 archivo=ExcelWriter('copia1.xls')
 copia1.to_excel(archivo,'Hoja Copia',index=False)
 archivo.save()
+archivo.close()
 
 # EJERCICIO 2
 
@@ -52,9 +53,10 @@ copia1=pd.DataFrame({ 'Pais' : paises, 'Capital':['Ottawa','Ciudad de México','
 
 copia1=copia1[['Pais','Capital']]
 
-archivo=ExcelWriter('copia2.xls')
-copia1.to_excel(archivo,'Hoja Copia 1',index=True)
-archivo.save()
+archivo0=ExcelWriter('copia2.xls')
+copia1.to_excel(archivo,'Hoja Copia 1',index=False)
+archivo0.save()
+archivo0.close()
 
 # Importamos numpy 
 
@@ -66,7 +68,7 @@ copia2 = pd.DataFrame(np.array([[2, 85, 37], [43, 55, 600]]))
 
 # Vamos a crear otra hoja en el mismo archivo 
 
-archivo=ExcelWriter('copia3.xls')
+archivo1=ExcelWriter('copia3.xls')
 copia2.to_excel(archivo,'Hoja Copia 2',index=False)
 
 
@@ -80,10 +82,10 @@ copia3=pd.DataFrame(a)
 
 # Guardamos el archivo
 
-archivo=ExcelWriter('copia3.xls')
-copia2.to_excel(archivo,'Hoja Copia 3',index=False)
-archivo.save()
-archivo.close()
+archivo1=ExcelWriter('copia3.xls')
+copia3.to_excel(archivo,'Hoja Copia 3',index=False)
+archivo1.save()
+archivo1.close()
 
 
 
